@@ -8,7 +8,7 @@ describe('logout', () => {
         cy.get('h6[class="oxd-text oxd-text--h6 oxd-topbar-header-breadcrumb-module"]').contains('Dashboard')
     
         cy.get('i.oxd-icon.bi-caret-down-fill.oxd-userdropdown-icon').click()
-        cy.get('a.oxd-userdropdown-link').click()
+        cy.get(':nth-child(4) > .oxd-userdropdown-link').click()
         cy.get('h5.oxd-text.oxd-text--h5.orangehrm-login-title').contains("Login")
     })
 })
