@@ -23,3 +23,22 @@
 //
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
+
+Cypress.Commands.add('login', (username, password) => 
+{
+    cy.session([username, password], () =>
+    {
+        cy.visit('https://opensource-demo.orangehrmlive.com/web/index.php/auth/login')
+        cy.title('OrangeHRM')
+        cy.get('input[name="username"]').type(username)
+        cy.get('input[name="password"]').type(password)
+        cy.get('button[class="oxd-button oxd-button--medium oxd-button--main orangehrm-login-button"]').click()  
+    })
+})
+
+Cypress.Commands.add('logoutweb', () => 
+{
+    cy.get('i.oxd-icon.bi-caret-down-fill.oxd-userdropdown-icon').click()
+    cy.get(':nth-child(4) > .oxd-userdropdown-link').click()
+    cy.get('h5.oxd-text.oxd-text--h5.orangehrm-login-title').contains("Login")
+})
