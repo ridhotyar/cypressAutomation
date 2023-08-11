@@ -33,6 +33,9 @@ Cypress.Commands.add('login', (username, password) =>
         cy.get('input[name="username"]').type(username)
         cy.get('input[name="password"]').type(password)
         cy.get('button[class="oxd-button oxd-button--medium oxd-button--main orangehrm-login-button"]').click()  
+    },
+    {
+        cacheAcrossSpecs: true
     })
 })
 
