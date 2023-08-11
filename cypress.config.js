@@ -1,5 +1,6 @@
 const { defineConfig } = require("cypress");
 const csv = require('@fast-csv/parse')
+const { writeToPath } = require('@fast-csv/format')
 
 module.exports = defineConfig({
   e2e: {
@@ -18,6 +19,14 @@ module.exports = defineConfig({
               resolve(dataArray)
             })
           })
+        }
+      })
+
+      //write to csv
+      on("task", {
+        writeToCsv({name,rows}){
+          writeToPath(`./${name}.csv`, rows)
+          return null
         }
       })
     },
